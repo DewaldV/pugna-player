@@ -4,19 +4,40 @@ require 'pugna/server'
 require 'rack/test'
 
  move_request = JSON.generate({
-  "boardState": {
-    "positions": [
-      { "coordinate": { "x": 0, "y": 0 }, "playerName": "blah1" },
-      { "coordinate": { "x": 1, "y": 1 }, "playerName": "blah2" }
+  boardState: {
+    positions: [
+      { coordinate: { x: 0, y: 0 }, playerName: 'blah1' },
+      { coordinate: { x: 1, y: 1 }, playerName: 'blah2' }
     ],
-    "boardSize": 0,
-    "turn": 0
+    boardSize: 0,
+    turn: 0
   },
-  "positionToMove": {
-    "coordinate": { "x": 0, "y": 0 },
-    "playerName": ""
+  positionToMove: {
+    coordinate: { x: 0, y: 0 },
+    playerName: ''
   }
 })
+
+link_response = {
+  links: [
+    { rel: 'ping', url: 'http://example.org/ping', methods: ['GET'] },
+    { rel: 'nextmove', url: 'http://example.org/nextmove', methods: ['POST'] }
+  ]
+}
+
+RSpec.describe Pugna::Server, '/' do
+  include Rack::Test::Methods
+
+  def app
+    Pugna::Server
+  end
+
+  it 'responds with links' do
+    get '/'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq(link_response.to_json)
+  end
+end
 
 RSpec.describe Pugna::Server, '/ping' do
   include Rack::Test::Methods

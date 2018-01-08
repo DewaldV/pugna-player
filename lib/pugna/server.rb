@@ -32,13 +32,15 @@ module Pugna
     end
 
     def get_links(links)
-      links.map do |link|
-        {
-          rel: link[:name],
-          url: "#{request.base_url}/#{link[:name]}",
-          methods: link[:methods]
-        }
-      end
+      {
+        links: links.map do |link|
+          {
+            rel: link[:name],
+            url: "#{request.base_url}/#{link[:name]}",
+            methods: link[:methods]
+          }
+        end
+      }
     end
   end
 end
