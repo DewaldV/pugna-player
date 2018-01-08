@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
-require 'json'
-require 'sinatra'
+require 'sinatra/base'
 
-before do
-  content_type 'application/json'
-end
+module Pugna
+  class Server < Sinatra::Base
+    before do
+      content_type 'application/json'
+    end
 
-get '/ping' do
-  'pong'.to_json
-end
+    get '/ping' do
+      'pong'.to_json
+    end
 
-post '/nextmove' do
-  puts request
-  puts request.body
-  puts request.body.read
-  request.body.rewind
-  JSON.parse request.body.read
-  JSON.generate 'STAY'
+    post '/nextmove' do
+      JSON.parse request.body.read
+      'STAY'.to_json
+    end
+  end
 end
