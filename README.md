@@ -1,7 +1,7 @@
 # pugna-player
-A player app for the Pugna Game Server
+[![Build Status](https://travis-ci.org/DewaldV/pugna-player.svg?branch=master)](https://travis-ci.org/DewaldV/pugna-player)
 
-Heroku: https://pugna.dewaldv.com
+A player app for the Pugna Game Server hosted on Heroku: https://pugna.dewaldv.com
 
 See: https://github.com/crafty-coder/pugna
 
