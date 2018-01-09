@@ -3,7 +3,6 @@
 require 'json'
 require 'pugna/moves'
 
-
 RSpec.describe Pugna::Moves, '#move' do
   context 'when nothing on the board' do
     it 'stays' do

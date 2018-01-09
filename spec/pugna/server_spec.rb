@@ -4,7 +4,7 @@ require 'json'
 require 'pugna/server'
 require 'rack/test'
 
- move_request = {
+move_request = {
   boardState: {
     positions: [
       { coordinate: { x: 0, y: 0 }, playerName: 'blah1' },
