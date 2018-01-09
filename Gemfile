@@ -2,7 +2,7 @@
 
 source 'https://www.rubygems.org'
 
-ruby '2.4.2'
+ruby File.read('.ruby-version').strip.split('-').first
 
 gem 'rack', '~> 2.0.3'
 gem 'rack-timeout', '~> 0.4.2'
