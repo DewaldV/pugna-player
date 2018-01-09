@@ -68,6 +68,6 @@ RSpec.describe Pugna::Server, 'POST /nextmove' do
   it 'responds STAY' do
     post('/nextmove', move_request, json_content)
     expect(last_response).to be_ok
-    expect(last_response.body).to eq('STAY'.to_json)
+    expect(last_response.body).to eq(move_response)
   end
 end
