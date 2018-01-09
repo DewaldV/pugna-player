@@ -17,7 +17,7 @@ module Pugna
       get_links(
         [
           { name: 'ping', methods: ['GET'] },
-          { name: 'nextmove', methods: ['POST']}
+          { name: 'nextmove', methods: ['POST'] }
         ]
       ).to_json
     end
