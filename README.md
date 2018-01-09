@@ -1,7 +1,7 @@
 # pugna-player
 A player app for the Pugna Game Server
 
-Heroku: https://pugna-player.herokuapp.com/
+Heroku: https://pugna.dewaldv.com
 
 See: https://github.com/crafty-coder/pugna
 
@@ -12,5 +12,6 @@ See: https://github.com/crafty-coder/pugna
 ## Usage
 ```
 bundle install
+bundle exec rspec
 bundle exec rackup
 ```

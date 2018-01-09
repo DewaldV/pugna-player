@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require 'json'
 require 'pugna/server'
 require 'rack/test'
 
- move_request = JSON.generate({
+ move_request = {
   boardState: {
     positions: [
       { coordinate: { x: 0, y: 0 }, playerName: 'blah1' },
@@ -16,7 +17,9 @@ require 'rack/test'
     coordinate: { x: 0, y: 0 },
     playerName: ''
   }
-})
+}.to_json
+
+move_response = 'STAY'.to_json
 
 link_response = {
   links: [
@@ -25,7 +28,7 @@ link_response = {
   ]
 }
 
-RSpec.describe Pugna::Server, '/' do
+RSpec.describe Pugna::Server, 'GET /' do
   include Rack::Test::Methods
 
   def app
@@ -39,7 +42,7 @@ RSpec.describe Pugna::Server, '/' do
   end
 end
 
-RSpec.describe Pugna::Server, '/ping' do
+RSpec.describe Pugna::Server, 'GET /ping' do
   include Rack::Test::Methods
 
   def app
@@ -53,17 +56,17 @@ RSpec.describe Pugna::Server, '/ping' do
   end
 end
 
-RSpec.describe Pugna::Server, '/nextmove' do
+RSpec.describe Pugna::Server, 'POST /nextmove' do
   include Rack::Test::Methods
 
-  json_header = { 'CONTENT_TYPE' => 'application/json' }
+  json_content = { 'CONTENT_TYPE' => 'application/json' }
 
   def app
     Pugna::Server
   end
 
   it 'responds STAY' do
-    post('/nextmove', move_request, json_header)
+    post('/nextmove', move_request, json_content)
     expect(last_response).to be_ok
     expect(last_response.body).to eq('STAY'.to_json)
   end
