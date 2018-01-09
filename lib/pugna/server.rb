@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
-require 'sinatra/reloader'
 
 module Pugna
   class Server < Sinatra::Base
     configure :development do
+      require 'sinatra/reloader'
       register Sinatra::Reloader
     end
 
