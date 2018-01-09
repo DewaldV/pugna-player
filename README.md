@@ -13,5 +13,5 @@ See: https://github.com/crafty-coder/pugna
 ```
 bundle install
 bundle exec rspec
-bundle exec rackup
+bundle exec puma -C config/puma.rb
 ```

@@ -5,11 +5,13 @@ GEM
     diff-lcs (1.3)
     multi_json (1.12.2)
     mustermann (1.0.1)
+    puma (3.11.0)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
+    rack-timeout (0.4.2)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -41,8 +43,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  puma (~> 3.11.0)
   rack (~> 2.0.3)
   rack-test (~> 0.8.2)
+  rack-timeout (~> 0.4.2)
   rspec (~> 3.7)
   sinatra (~> 2.0.0)
   sinatra-contrib (~> 2.0.0)
