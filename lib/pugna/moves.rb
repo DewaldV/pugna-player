@@ -5,20 +5,6 @@ require 'pugna/piece'
 
 module Pugna
   class Moves
-    def self.move_to_x_y(move)
-      {
-        UP_LEFT:    { x: -1, y:  1 },
-        UP:         { x:  0, y:  1 },
-        UP_RIGHT:   { x:  1, y:  1 },
-        LEFT:       { x: -1, y:  0 },
-        STAY:       { x:  0, y:  0 },
-        RIGHT:      { x:  1, y:  0 },
-        DOWN_LEFT:  { x: -1, y: -1 },
-        DOWN:       { x:  0, y: -1 },
-        DOWN_RIGHT: { x:  1, y: -1 }
-      }
-    end
-
     def next_move(state)
       # Move towards closest enemy
       # Stay if enemy is exactly 2 squares away
@@ -30,7 +16,7 @@ module Pugna
       closest_enemy = board.closest_enemy active_piece
       dist_closest_enemy = active_piece.distance_from closest_enemy
 
-      unless dist_closest_enemy == 2
+      if dist_closest_enemy == 2
         :STAY
       end
 
