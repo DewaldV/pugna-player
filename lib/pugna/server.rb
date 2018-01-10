@@ -29,11 +29,11 @@ module Pugna
     end
 
     get '/ping' do
-      'pong'.to_json
+      :pong.to_json
     end
 
     post '/nextmove' do
-      move_request = JSON.parse request.body.read
+      move_request = JSON.parse(request.body.read, symbolize_names: true)
       @moves.next_move(move_request).to_json
     end
 

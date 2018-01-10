@@ -4,20 +4,8 @@ require 'json'
 require 'pugna/server'
 require 'rack/test'
 
-move_request = {
-  boardState: {
-    positions: [
-      { coordinate: { x: 0, y: 0 }, playerName: 'blah1' },
-      { coordinate: { x: 1, y: 1 }, playerName: 'blah2' }
-    ],
-    boardSize: 0,
-    turn: 0
-  },
-  positionToMove: {
-    coordinate: { x: 0, y: 0 },
-    playerName: ''
-  }
-}.to_json
+board_states = Pugna::Support::BoardStates.new
+move_request = board_states.enemy_adjacent.to_json
 
 link_response = {
   links: [
@@ -63,9 +51,9 @@ RSpec.describe Pugna::Server, 'POST /nextmove' do
     Pugna::Server
   end
 
-  it 'responds STAY' do
+  it 'responds UP_LEFT' do
     post('/nextmove', move_request, json_content)
     expect(last_response).to be_ok
-    expect(last_response.body).to eq(:STAY.to_json)
+    expect(last_response.body).to eq(:UP_LEFT.to_json)
   end
 end
