@@ -3,12 +3,12 @@
 require 'json'
 require 'pugna/moves'
 
-RSpec.describe Pugna::Moves, '#move' do
+RSpec.describe Pugna::Moves, '#next_move' do
   context 'when nothing on the board' do
     it 'stays' do
       pugna = Pugna::Moves.new
 
-      mv = pugna.move({})
+      mv = pugna.next_move({})
 
       expect(mv).to be(:STAY)
     end

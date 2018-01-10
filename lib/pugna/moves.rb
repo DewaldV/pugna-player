@@ -2,7 +2,7 @@
 
 module Pugna
   class Moves
-    def move(_board)
+    def next_move(_board)
       :STAY
     end
   end

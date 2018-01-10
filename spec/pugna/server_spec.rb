@@ -19,8 +19,6 @@ move_request = {
   }
 }.to_json
 
-move_response = 'STAY'.to_json
-
 link_response = {
   links: [
     { rel: 'ping', url: 'http://example.org/ping', methods: ['GET'] },
@@ -68,6 +66,6 @@ RSpec.describe Pugna::Server, 'POST /nextmove' do
   it 'responds STAY' do
     post('/nextmove', move_request, json_content)
     expect(last_response).to be_ok
-    expect(last_response.body).to eq(move_response)
+    expect(last_response.body).to eq(:STAY.to_json)
   end
 end

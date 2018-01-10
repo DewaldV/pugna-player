@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
+require 'pugna/moves'
 require 'sinatra/base'
 
 module Pugna
   class Server < Sinatra::Base
+    def initialize(app = nil, moves = Pugna::Moves.new)
+      super(app)
+      @moves = moves
+    end
+
     configure :development do
       require 'sinatra/reloader'
       register Sinatra::Reloader
@@ -27,9 +33,11 @@ module Pugna
     end
 
     post '/nextmove' do
-      JSON.parse request.body.read
-      'STAY'.to_json
+      move_request = JSON.parse request.body.read
+      @moves.next_move(move_request).to_json
     end
+
+    private
 
     def get_links(links)
       {
