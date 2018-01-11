@@ -2,16 +2,12 @@
 
 module Pugna
   class Board
-    def initialize(size, turn, pieces)
-      @size = size
-      @turn = turn
+    def initialize(pieces)
       @pieces = pieces
     end
 
     def self.from_hash(board_hash)
       Pugna::Board.new(
-        board_hash[:boardSize],
-        board_hash[:turn],
         board_hash[:positions].map { |p| Pugna::Piece.from_hash p }
       )
     end

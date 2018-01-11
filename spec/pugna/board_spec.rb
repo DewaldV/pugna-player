@@ -6,8 +6,7 @@ RSpec.describe Pugna::Board, '#closest_enemy' do
   context 'with enemies' do
     it 'finds the closest' do
       piece = Pugna::Piece.new('test1', 2, 2)
-      board = Pugna::Board.new(20, 1,
-                               [
+      board = Pugna::Board.new([
                                  piece,
                                  Pugna::Piece.new('test2', 0, 2),
                                  Pugna::Piece.new('test2', 3, 5)

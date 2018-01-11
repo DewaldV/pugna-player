@@ -16,7 +16,7 @@ module Pugna
 
         return :STAY if dist_closest_enemy == 2
 
-        Pugna::Move.move_to(active_piece, closest_enemy)
+        Pugna::Move.direction(active_piece, closest_enemy)
       end
     end
   end

@@ -2,6 +2,7 @@
 
 require 'json'
 require 'pugna/server'
+require 'pugna/support/board_states'
 require 'rack/test'
 
 board_states = Pugna::Support::BoardStates.new
