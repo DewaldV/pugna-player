@@ -19,10 +19,7 @@ module Pugna
       def enemy_adjacent
         {
           boardState: {
-            positions: [
-              position(0, 0, 'Player1'),
-              position(3, 3, 'Player2')
-            ],
+            positions: [position(0, 0, 'Player1'), position(3, 3, 'Player2')],
             boardSize: 80,
             turn: 1
           },

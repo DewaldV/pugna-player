@@ -23,3 +23,16 @@ RSpec.describe Pugna::Piece, '#distance_from' do
     end
   end
 end
+
+RSpec.describe Pugna::Piece, '#danger_close?' do
+  context 'an enemy piece' do
+    it 'knows if enemies are within 2 moves' do
+      piece = Pugna::Piece.new('test', 2, 2)
+      another_piece = Pugna::Piece.new('test', 0, 2)
+
+      danger = piece.danger_close? another_piece
+
+      expect(danger).to be true
+    end
+  end
+end

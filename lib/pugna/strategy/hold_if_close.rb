@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'pugna/board'
+require 'pugna/move'
 require 'pugna/piece'
 
 module Pugna
@@ -13,40 +14,9 @@ module Pugna
         closest_enemy = board.closest_enemy active_piece
         dist_closest_enemy = active_piece.distance_from closest_enemy
 
-        if dist_closest_enemy == 2
-          :STAY
-        end
+        return :STAY if dist_closest_enemy == 2
 
-        move_to(active_piece, closest_enemy)
-      end
-
-      def move_to(piece, enemy)
-        x_dir = x_axis_move(enemy.x - piece.x)
-        y_dir = y_axis_move(enemy.y - piece.y)
-        if x_dir == :MID && y_dir == :MID
-          :STAY
-        end
-        "#{y_dir}_#{x_dir}".to_sym
-      end
-
-      def x_axis_move(x)
-        if x.negative?
-          :LEFT
-        elsif x.positive?
-          :RIGHT
-        else
-          :MID
-        end
-      end
-
-      def y_axis_move(y)
-        if y.negative?
-          :UP
-        elsif y.positive?
-          :DOWN
-        else
-          :MID
-        end
+        Pugna::Move.move_to(active_piece, closest_enemy)
       end
     end
   end

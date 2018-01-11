@@ -22,6 +22,10 @@ module Pugna
       @player_name != piece.player_name
     end
 
+    def danger_close?(_piece)
+      true
+    end
+
     def distance_from(other_piece)
       x_diff_sq = diff_sq(@x, other_piece.x)
       y_diff_sq = diff_sq(@y, other_piece.y)
