@@ -10,8 +10,8 @@ module Pugna
       # Stay if enemy is exactly 2 squares away
       # Always capture if enemy is adjacent
 
-      board = Pugna::Board.new state[:boardState]
-      active_piece = Pugna::Piece.new state[:positionToMove]
+      board = Pugna::Board.from_hash state[:boardState]
+      active_piece = Pugna::Piece.from_hash state[:positionToMove]
 
       closest_enemy = board.closest_enemy active_piece
       dist_closest_enemy = active_piece.distance_from closest_enemy

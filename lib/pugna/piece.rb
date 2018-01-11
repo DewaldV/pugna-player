@@ -4,10 +4,18 @@ module Pugna
   class Piece
     attr_reader :player_name, :x, :y
 
-    def initialize(piece_hash)
-      @player_name = piece_hash[:playerName]
-      @x = piece_hash[:coordinate][:x]
-      @y = piece_hash[:coordinate][:y]
+    def initialize(player_name, x, y)
+      @player_name = player_name
+      @x = x
+      @y = y
+    end
+
+    def self.from_hash(piece_hash)
+      Pugna::Piece.new(
+        piece_hash[:playerName],
+        piece_hash[:coordinate][:x],
+        piece_hash[:coordinate][:y]
+      )
     end
 
     def enemy?(piece)

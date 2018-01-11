@@ -5,8 +5,8 @@ require 'pugna/piece'
 RSpec.describe Pugna::Piece, '#distance_from' do
   context 'another piece' do
     it 'calculates distance to be 2' do
-      piece = Pugna::Piece.new(playerName: 'test', coordinate: { x: 2, y: 2 })
-      another_piece = Pugna::Piece.new(playerName: 'test', coordinate: { x: 0, y: 2 })
+      piece = Pugna::Piece.new('test', 2, 2)
+      another_piece = Pugna::Piece.new('test', 0, 2)
 
       distance = piece.distance_from another_piece
 
@@ -14,8 +14,8 @@ RSpec.describe Pugna::Piece, '#distance_from' do
     end
 
     it 'calculates distance to be 5' do
-      piece = Pugna::Piece.new(playerName: 'test', coordinate: { x: 0, y: 0 })
-      another_piece = Pugna::Piece.new(playerName: 'test', coordinate: { x: 3, y: 4 })
+      piece = Pugna::Piece.new('test', 0, 0)
+      another_piece = Pugna::Piece.new('test', 3, 4)
 
       distance = piece.distance_from another_piece
 

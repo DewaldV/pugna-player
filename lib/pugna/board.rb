@@ -2,10 +2,18 @@
 
 module Pugna
   class Board
-    def initialize(board_hash)
-      @size = board_hash[:boardSize]
-      @turn = board_hash[:turn]
-      @pieces = board_hash[:positions].map { |p| Pugna::Piece.new p }
+    def initialize(size, turn, pieces)
+      @size = size
+      @turn = turn
+      @pieces = pieces
+    end
+
+    def self.from_hash(board_hash)
+      Pugna::Board.new(
+        board_hash[:boardSize],
+        board_hash[:turn],
+        board_hash[:positions].map { |p| Pugna::Piece.from_hash p }
+      )
     end
 
     def closest_enemy(piece)
