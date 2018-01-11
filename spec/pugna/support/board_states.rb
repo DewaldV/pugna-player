@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pugna/moves'
 require 'pugna/support/board_states'
 
 module Pugna

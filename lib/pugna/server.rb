@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'pugna/moves'
+require 'pugna/strategy/hold_if_close'
 require 'sinatra/base'
 
 module Pugna
   class Server < Sinatra::Base
-    def initialize(app = nil, moves = Pugna::Moves.new)
+    def initialize(app = nil, strategy = Pugna::Strategy::HoldIfClose.new)
       super(app)
-      @moves = moves
+      @strategy = strategy
     end
 
     configure :development do
@@ -34,7 +34,7 @@ module Pugna
 
     post '/nextmove' do
       move_request = JSON.parse(request.body.read, symbolize_names: true)
-      @moves.next_move(move_request).to_json
+      @strategy.next_move(move_request).to_json
     end
 
     private
