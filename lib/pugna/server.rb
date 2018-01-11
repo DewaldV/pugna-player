@@ -34,7 +34,11 @@ module Pugna
 
     post '/nextmove' do
       move_request = JSON.parse(request.body.read, symbolize_names: true)
-      @strategy.next_move(move_request).to_json
+
+      board = Pugna::Board.from_hash move_request[:boardState]
+      active_piece = Pugna::Piece.from_hash move_request[:positionToMove]
+
+      @strategy.next_move(board, active_piece).to_json
     end
 
     private

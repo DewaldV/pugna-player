@@ -8,10 +8,13 @@ board_states = Pugna::Support::BoardStates.new
 RSpec.describe Pugna::Strategy::HoldIfClose, '#next_move' do
   context 'capturing the enemy' do
     it 'moves up_left' do
-      board = board_states.enemy_adjacent
+      state = board_states.enemy_adjacent
+      board = Pugna::Board.from_hash state[:boardState]
+      active_piece = Pugna::Piece.from_hash state[:positionToMove]
+
       pugna = Pugna::Strategy::HoldIfClose.new
 
-      mv = pugna.next_move(board)
+      mv = pugna.next_move(board, active_piece)
 
       expect(mv).to eq(:UP_LEFT)
     end

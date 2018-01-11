@@ -6,14 +6,10 @@ require 'pugna/piece'
 module Pugna
   module Strategy
     class HoldIfClose
-      def next_move(state)
+      def next_move(board, active_piece)
         # Move towards closest enemy
         # Stay if enemy is exactly 2 squares away
         # Always capture if enemy is adjacent
-
-        board = Pugna::Board.from_hash state[:boardState]
-        active_piece = Pugna::Piece.from_hash state[:positionToMove]
-
         closest_enemy = board.closest_enemy active_piece
         dist_closest_enemy = active_piece.distance_from closest_enemy
 
