@@ -23,11 +23,11 @@ module Pugna
     end
 
     def enemy?(piece)
-      @player_name != piece.player_name
+      !friendly?(piece)
     end
 
-    def danger_close?(_piece)
-      true
+    def friendly?(piece)
+      @player_name == piece.player_name
     end
 
     def distance_from(other_piece)

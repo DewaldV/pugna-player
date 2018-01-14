@@ -19,3 +19,21 @@ RSpec.describe Pugna::Board, '#closest_enemy' do
     end
   end
 end
+
+RSpec.describe Pugna::Board, '#friendlies' do
+  context 'with friendlies' do
+    it 'returns all friendly pieces' do
+      piece = Pugna::Piece.new('test1', 2, 2)
+      board = Pugna::Board.new([
+                                 piece,
+                                 Pugna::Piece.new('test1', 0, 2),
+                                 Pugna::Piece.new('test1', 3, 5)
+                               ])
+
+      friendlies = board.friendlies piece
+
+      expect(friendlies.size).to eq(3)
+      friendlies.each { |f| expect(f.player_name).to eq 'test1' }
+    end
+  end
+end

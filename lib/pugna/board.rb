@@ -16,5 +16,9 @@ module Pugna
       @pieces.select { |p| p.enemy? piece }
              .min_by { |p| p.distance_from piece }
     end
+
+    def friendlies(piece)
+      @pieces.select { |p| p.friendly? piece }
+    end
   end
 end
