@@ -13,9 +13,16 @@ module Pugna
     end
 
     def self.direction(from, to)
+      y = to.y - from.y
+      x = to.x - from.x
+
+      move(x, y)
+    end
+
+    def self.move(x, y)
       move = [
-        y_axis(to.y - from.y),
-        x_axis(to.x - from.x)
+        y_axis(y),
+        x_axis(x)
       ].reject(&:nil?)
 
       move.push(:STAY) if move.empty?

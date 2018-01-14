@@ -40,5 +40,14 @@ RSpec.describe Pugna::Move, '#direction' do
 
       expect(direction).to eq(:UP)
     end
+
+    it 'finds the direction to move is up' do
+      piece1 = Pugna::Piece.new('test1', 2, 1)
+      piece2 = Pugna::Piece.new('test2', 2, 2)
+
+      direction = Pugna::Move.direction(piece1, piece2)
+
+      expect(direction).to eq(:DOWN)
+    end
   end
 end

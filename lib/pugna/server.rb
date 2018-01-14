@@ -41,7 +41,6 @@ module Pugna
 
     post '/nextmove' do
       move_request = JSON.parse(request.body.read, symbolize_names: true)
-      logger.info "Received: #{move_request}"
 
       board = Pugna::Board.from_hash move_request[:boardState]
       active_piece = Pugna::Piece.from_hash move_request[:positionToMove]
