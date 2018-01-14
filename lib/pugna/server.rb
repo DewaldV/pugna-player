@@ -17,7 +17,7 @@ module Pugna
 
     configure do
       enable :logging
-      disable :dump_errors
+      enable :dump_errors
       disable :raise_errors
       disable :show_exceptions
     end

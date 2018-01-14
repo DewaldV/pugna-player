@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pugna/support/board_states'
-
 module Pugna
   module Support
     class BoardStates
