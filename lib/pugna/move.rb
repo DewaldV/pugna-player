@@ -12,18 +12,6 @@ module Pugna
       new(direction, x, y).freeze
     end
 
-    MOVES = {
-      STAY:       Pugna::Move.inst(:STAY, 0, 0),
-      LEFT:       Pugna::Move.inst(:LEFT, -1, 0),
-      RIGHT:      Pugna::Move.inst(:RIGHT, 1, 0),
-      UP:         Pugna::Move.inst(:UP, 0, 1),
-      UP_LEFT:    Pugna::Move.inst(:UP_LEFT, -1, 1),
-      UP_RIGHT:   Pugna::Move.inst(:UP_RIGHT, 1, 1),
-      DOWN:       Pugna::Move.inst(:DOWN, 0, -1),
-      DOWN_LEFT:  Pugna::Move.inst(:DOWN_LEFT, -1, -1),
-      DOWN_RIGHT: Pugna::Move.inst(:DOWN_RIGHT, 1, -1)
-    }.freeze
-
     def self.direction(from, to)
       move = [
         y_axis(to.y - from.y),

@@ -2,6 +2,7 @@
 
 require 'pugna/move'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Pugna::Move, '#direction' do
   context 'between two pieces' do
     it 'finds the direction to move is down_right' do
