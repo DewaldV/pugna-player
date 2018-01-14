@@ -7,22 +7,25 @@ module Pugna
     class BoardStates
       def empty
         {
-          boardState: {
-            positions: [],
-            boardSize: 80,
-            turn: 1
-          },
+          boardState: board([]),
           positionToMove: position(1, 1, 'Player2')
         }.freeze
       end
 
       def enemy_adjacent
         {
-          boardState: {
-            positions: [position(0, 0, 'Player1'), position(3, 3, 'Player2')],
-            boardSize: 80,
-            turn: 1
-          },
+          boardState: board(
+            [position(2, 2, 'Player1'), position(3, 3, 'Player2')]
+          ),
+          positionToMove: position(3, 3, 'Player2')
+        }.freeze
+      end
+
+      def enemy_within_2_squares
+        {
+          boardState: board(
+            [position(1, 1, 'Player1'), position(3, 3, 'Player2')]
+          ),
           positionToMove: position(3, 3, 'Player2')
         }.freeze
       end
@@ -30,6 +33,14 @@ module Pugna
       def position(x, y, name)
         {
           coordinate: { x: x, y: y }, playerName: name
+        }
+      end
+
+      def board(positions)
+        {
+          positions: positions,
+          boardSize: 80,
+          turn: 1
         }
       end
     end

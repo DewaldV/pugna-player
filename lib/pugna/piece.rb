@@ -18,6 +18,10 @@ module Pugna
       )
     end
 
+    def to_s
+      "{ player: #{@player_name}, { x: #{@x}, y: #{@y} } }"
+    end
+
     def enemy?(piece)
       @player_name != piece.player_name
     end
@@ -35,7 +39,7 @@ module Pugna
     private
 
     def diff_sq(x1, x2)
-      (x1 - x2).abs**2
+      (x1 - x2)**2
     end
   end
 end

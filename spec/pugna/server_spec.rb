@@ -6,7 +6,7 @@ require 'pugna/support/board_states'
 require 'rack/test'
 
 board_states = Pugna::Support::BoardStates.new
-move_request = board_states.enemy_adjacent.to_json
+move_request = board_states.empty.to_json
 
 link_response = {
   links: [
@@ -55,6 +55,6 @@ RSpec.describe Pugna::Server, 'POST /nextmove' do
   it 'responds UP_LEFT' do
     post('/nextmove', move_request, json_content)
     expect(last_response).to be_ok
-    expect(last_response.body).to eq(:UP_LEFT.to_json)
+    expect(last_response.body).to eq(:STAY.to_json)
   end
 end

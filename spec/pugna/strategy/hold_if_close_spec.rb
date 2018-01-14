@@ -19,4 +19,18 @@ RSpec.describe Pugna::Strategy::HoldIfClose, '#next_move' do
       expect(mv).to eq(:UP_LEFT)
     end
   end
+
+  context 'ambushing the enemy' do
+    it 'waits if the enemy is outside attack range but within 2 moves' do
+      state = board_states.enemy_within_2_squares
+      board = Pugna::Board.from_hash state[:boardState]
+      active_piece = Pugna::Piece.from_hash state[:positionToMove]
+
+      pugna = Pugna::Strategy::HoldIfClose.new
+
+      mv = pugna.next_move(board, active_piece)
+
+      expect(mv).to eq(:STAY)
+    end
+  end
 end

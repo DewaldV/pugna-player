@@ -10,7 +10,7 @@ RSpec.describe Pugna::Move, '#direction' do
 
       direction = Pugna::Move.direction(piece1, piece2)
 
-      expect(direction).to be(:DOWN_RIGHT)
+      expect(direction).to eq(:DOWN_RIGHT)
     end
 
     it 'finds the direction to move is stay' do
@@ -19,7 +19,7 @@ RSpec.describe Pugna::Move, '#direction' do
 
       direction = Pugna::Move.direction(piece1, piece2)
 
-      expect(direction).to be(:STAY)
+      expect(direction).to eq(:STAY)
     end
 
     it 'finds the direction to move is right' do
@@ -28,7 +28,7 @@ RSpec.describe Pugna::Move, '#direction' do
 
       direction = Pugna::Move.direction(piece1, piece2)
 
-      expect(direction).to be(:RIGHT)
+      expect(direction).to eq(:RIGHT)
     end
 
     it 'finds the direction to move is up' do
@@ -37,7 +37,7 @@ RSpec.describe Pugna::Move, '#direction' do
 
       direction = Pugna::Move.direction(piece1, piece2)
 
-      expect(direction).to be(:UP)
+      expect(direction).to eq(:UP)
     end
   end
 end

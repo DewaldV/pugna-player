@@ -24,10 +24,10 @@ module Pugna
       DOWN_RIGHT: Pugna::Move.inst(:DOWN_RIGHT, 1, -1)
     }.freeze
 
-    def self.direction(piece, enemy)
+    def self.direction(from, to)
       move = [
-        y_axis(enemy.y - piece.y),
-        x_axis(enemy.x - piece.x)
+        y_axis(to.y - from.y),
+        x_axis(to.x - from.x)
       ].reject(&:nil?)
 
       move.push(:STAY) if move.empty?

@@ -24,6 +24,16 @@ RSpec.describe Pugna::Piece, '#distance_from' do
   end
 end
 
+RSpec.describe Pugna::Piece, '#to_s' do
+  context 'for a piece' do
+    it 'converts the piece to string' do
+      piece = Pugna::Piece.new('test', 2, 3)
+
+      expect(piece.to_s).to eq('{ player: test, { x: 2, y: 3 } }')
+    end
+  end
+end
+
 RSpec.describe Pugna::Piece, '#danger_close?' do
   context 'an enemy piece' do
     it 'knows if enemies are within 2 moves' do

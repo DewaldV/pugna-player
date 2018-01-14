@@ -15,6 +15,13 @@ module Pugna
       register Sinatra::Reloader
     end
 
+    configure do
+      enable :logging
+      disable :dump_errors
+      disable :raise_errors
+      disable :show_exceptions
+    end
+
     before do
       content_type 'application/json'
     end
