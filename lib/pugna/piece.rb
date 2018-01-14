@@ -33,7 +33,7 @@ module Pugna
     def neighbour?(piece)
       (-1..1).to_a.each do |x|
         (-1..1).to_a.each do |y|
-          continue if x.zero? && y.zero?
+          next if x.zero? && y.zero?
           return true if (piece.x + x == @x) && (piece.y + y == @y)
         end
       end

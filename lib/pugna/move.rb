@@ -12,11 +12,17 @@ module Pugna
       new(direction, x, y).freeze
     end
 
-    def self.direction(from, to)
+    def self.direction(from, to, friendlies=[])
+      neighbours = friendlies.select { |p| from.neighbour? p }
+
       y = to.y - from.y
       x = to.x - from.x
 
-      move(x, y)
+      Moves[move(x, y)].to_sym
+    end
+
+    def to_sym
+      @direction
     end
 
     def self.move(x, y)
@@ -41,4 +47,16 @@ module Pugna
       nil
     end
   end
+
+  Moves = {
+    STAY:       Pugna::Move.inst(:STAY, 0, 0),
+    LEFT:       Pugna::Move.inst(:LEFT, -1, 0),
+    RIGHT:      Pugna::Move.inst(:RIGHT, 1, 0),
+    UP:         Pugna::Move.inst(:UP, 0, 1),
+    UP_LEFT:    Pugna::Move.inst(:UP_LEFT, -1, 1),
+    UP_RIGHT:   Pugna::Move.inst(:UP_RIGHT, 1, 1),
+    DOWN:       Pugna::Move.inst(:DOWN, 0, -1),
+    DOWN_LEFT:  Pugna::Move.inst(:DOWN_LEFT, -1, -1),
+    DOWN_RIGHT: Pugna::Move.inst(:DOWN_RIGHT, 1, -1)
+  }.freeze
 end
