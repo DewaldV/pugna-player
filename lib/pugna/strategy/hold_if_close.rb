@@ -11,9 +11,6 @@ module Pugna
       include Pugna::Logger
 
       def next_move(board, active_piece)
-        # Move towards closest enemy
-        # Stay if enemy is 2 squares away
-        # Always capture if enemy is adjacent
         logger.info "Active: #{active_piece}"
 
         closest_enemy = board.closest_enemy active_piece
