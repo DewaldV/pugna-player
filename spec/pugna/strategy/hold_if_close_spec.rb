@@ -16,7 +16,7 @@ RSpec.describe Pugna::Strategy::HoldIfClose, '#next_move' do
 
       mv = pugna.next_move(board, active_piece)
 
-      expect(mv).to eq(:UP_LEFT)
+      expect(mv).to eq(:DOWN_LEFT)
     end
   end
 

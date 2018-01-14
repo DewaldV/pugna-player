@@ -36,8 +36,8 @@ module Pugna
     end
 
     def self.y_axis(y)
-      return :UP   if y.negative?
-      return :DOWN if y.positive?
+      return :UP   if y.positive?
+      return :DOWN if y.negative?
       nil
     end
   end
