@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-require 'logger'
 require 'pugna/board'
+require 'pugna/logger'
 require 'pugna/move'
 require 'pugna/piece'
 
 module Pugna
   module Strategy
     class HoldIfClose
+      include Pugna::Logger
+
       def next_move(board, active_piece)
         # Move towards closest enemy
         # Stay if enemy is 2 squares away

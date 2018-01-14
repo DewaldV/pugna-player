@@ -3,10 +3,6 @@
 require 'pugna/strategy/hold_if_close'
 require 'sinatra/base'
 
-def logger
-  @logger ||= Logger.new(STDOUT)
-end
-
 module Pugna
   class Server < Sinatra::Base
     def initialize(app = nil, strategy = Pugna::Strategy::HoldIfClose.new)
