@@ -21,8 +21,10 @@ module Pugna
         enemy_dist = active_piece.distance_from(closest_enemy).floor(2)
         logger.info "Distance to enemy: #{enemy_dist}"
         friendlies = board.friendlies(active_piece)
+                          .select { |p| p.neighbour? active_piece }
 
-        return :STAY if (enemy_dist.between? 2, 4) && (friendlies.size < 4)
+        return :STAY if friendlies.size < 2
+        return :STAY if enemy_dist.between? 2, 4
 
         move = Pugna::Move.direction(active_piece, closest_enemy, friendlies)
         logger.info "Selected move: #{move}"

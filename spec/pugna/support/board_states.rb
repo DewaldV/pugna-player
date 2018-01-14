@@ -13,7 +13,12 @@ module Pugna
       def enemy_adjacent
         {
           boardState: board(
-            [position(2, 2, 'Player1'), position(3, 3, 'Player2')]
+            [
+              position(2, 2, 'Player1'),
+              position(3, 3, 'Player2'),
+              position(3, 4, 'Player2'),
+              position(2, 3, 'Player2')
+            ]
           ),
           positionToMove: position(3, 3, 'Player2')
         }.freeze
