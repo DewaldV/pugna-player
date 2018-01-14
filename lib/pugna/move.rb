@@ -8,29 +8,21 @@ module Pugna
       @y = y
     end
 
-    def to_sym
-      @direction
-    end
-
     def self.inst(direction, x, y)
       new(direction, x, y).freeze
     end
 
-    def self.direction(from, to, friendlies)
+    def self.direction(from, to, friendlies=[])
+      neighbours = friendlies.select { |p| from.neighbour? p }
+
       y = to.y - from.y
       x = to.x - from.x
 
-      non_colliding(Moves[move(x, y)], friendlies)
-      move = Moves[move(x, y)]
-
-      if collides? move
-        return Moves[move(0, y)] if y.abs > x.abs
-        return Moves[move(x, 0)] if x.abs > y.abs
-      return move
-      end
+      Moves[move(x, y)].to_sym
     end
 
-    def self.non_colliding(move)
+    def to_sym
+      @direction
     end
 
     def self.move(x, y)
