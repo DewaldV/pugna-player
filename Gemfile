@@ -4,7 +4,7 @@ source 'https://www.rubygems.org'
 
 ruby File.read('.ruby-version').strip.split('-').first
 
-gem 'rack', '~> 2.0.3'
+gem 'rack', '~> 2.1.4'
 gem 'rack-timeout', '~> 0.4.2'
 gem 'sinatra', '~> 2.0.0'
 
