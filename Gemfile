@@ -18,5 +18,5 @@ group :test do
 end
 
 group :production do
-  gem 'puma', '~> 4.3.8'
+  gem 'puma', '~> 4.3.9'
 end
